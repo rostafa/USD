@@ -97,10 +97,14 @@ model = Sequential()
 
 model.add(Dense(units=128, input_shape=(784, ), activation="relu"))
 model.add(Dense(units=128, activation="relu"))
+model.add(Dense(units=64, activation="relu"))
 model.add(Dropout(0.25))
 model.add(Dense(units=10, activation="softmax"))
 
-model.compile(loss='categorical_crossentropy', optimizer='sgd', metrics=['accuracy'])
+model.compile(optimizer=Adam(), loss='categorical_crossentropy', metrics=['accuracy'])
+
+batch_size = 256
+
 model.summary()
 
 # lets train the model: Batch size 512, # epochs 20
